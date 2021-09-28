@@ -50,7 +50,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(moshi: Moshi, okhttp: OkHttpClient) =
         Retrofit.Builder()
-            .baseUrl("https://cdn.sixt.io/")
+            .baseUrl(NetworkKeys.getBaseUrl())
             .client(okhttp)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()

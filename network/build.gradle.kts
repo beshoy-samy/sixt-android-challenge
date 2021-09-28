@@ -7,6 +7,7 @@ plugins {
 
 android {
     compileSdk = Config.AndroidProject.compileSdkVersion
+    ndkVersion = Config.AndroidProject.ndkVersion
 
     defaultConfig {
         minSdk = Config.AndroidProject.minSdkVersion
@@ -30,6 +31,11 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    externalNativeBuild {
+        cmake {
+            path = file("CMakeLists.txt")
+        }
+    }
 }
 
 dependencies {
