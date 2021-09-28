@@ -9,4 +9,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "SixtChallenge"
+
 include(":app")
+include(":network")
