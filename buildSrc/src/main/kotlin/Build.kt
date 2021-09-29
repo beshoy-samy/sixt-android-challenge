@@ -11,6 +11,8 @@ object Build {
     object Plugins {
         const val androidApplicationPlugin = "com.android.application"
         const val androidLibraryPlugin = "com.android.library"
+        const val javaLibraryPlugin = "java-library"
+        const val kotlinPlugin = "kotlin"
         const val kotlinAndroidPlugin = "android"
         const val kotlinKaptPlugin = "kapt"
         const val hiltAndroidPlugin = "dagger.hilt.android.plugin"
