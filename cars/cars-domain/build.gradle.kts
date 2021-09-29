@@ -10,5 +10,6 @@ java {
 
 dependencies {
     withJavaInject()
-    withTestDependencies()
+    withCoroutinesCore()
+    withCoreTestDependencies()
 }
