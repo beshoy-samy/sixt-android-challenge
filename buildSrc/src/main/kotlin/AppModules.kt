@@ -7,3 +7,13 @@ object AppModules {
         add("api", project(":network"))
 
 }
+
+object Cars {
+
+    fun DependencyHandlerScope.withCarsModelModule() =
+        add("implementation", project(":cars:cars-model"))
+
+    fun DependencyHandlerScope.withCarsDomainModule() =
+        add("implementation", project(":cars:cars-domain"))
+
+}
