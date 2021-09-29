@@ -10,6 +10,8 @@ object Build {
 
     object Plugins {
         const val androidApplicationPlugin = "com.android.application"
+        const val javaLibraryPlugin = "java-library"
+        const val kotlinPlugin = "kotlin"
         const val androidLibraryPlugin = "com.android.library"
         const val kotlinAndroidPlugin = "android"
         const val kotlinKaptPlugin = "kapt"
