@@ -10,6 +10,7 @@ buildscript {
         classpath(Build.gradleBuildTools)
         classpath(Build.kotlinPlugin)
         classpath(Build.hiltPlugin)
+        classpath(Build.mapsPlatformSecretPlugin)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

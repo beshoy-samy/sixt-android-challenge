@@ -6,6 +6,7 @@ plugins {
     kotlin(Build.Plugins.kotlinAndroidPlugin)
     kotlin(Build.Plugins.kotlinKaptPlugin)
     id(Build.Plugins.hiltAndroidPlugin)
+    id(Build.Plugins.mapsPlatformSecretPlugin)
 }
 
 android {
@@ -45,6 +46,7 @@ dependencies {
     withNavigationComponent()
     withCoreModule()
     withCarsDomainModule()
+    withGoogleMaps()
 }
 
 kapt {
