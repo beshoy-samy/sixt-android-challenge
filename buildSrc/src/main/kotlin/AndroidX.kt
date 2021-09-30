@@ -35,3 +35,26 @@ fun DependencyHandlerScope.withAndroidX() {
     }
 
 }
+
+object LifeCycleKtx {
+
+    private const val version = "2.4.0-alpha03"
+    private const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+    private const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
+
+    internal val dependencies =
+        mapOf(
+            "implementation" to listOf(viewmodelKtx, livedataKtx)
+        )
+}
+
+fun DependencyHandlerScope.withLifeCycleKtx() {
+
+    LifeCycleKtx.dependencies.keys.forEach { libraryKey ->
+
+        val libs = LifeCycleKtx.dependencies[libraryKey]!!
+
+        libs.forEach { add(libraryKey, it) }
+    }
+
+}

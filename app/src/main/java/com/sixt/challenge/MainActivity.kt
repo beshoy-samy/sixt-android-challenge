@@ -1,11 +1,18 @@
 package com.sixt.challenge
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import com.sixt.challenge.databinding.ActivityMainBinding
+import com.sixt.core.base.BaseEmptyActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+@AndroidEntryPoint
+class MainActivity : BaseEmptyActivity<ActivityMainBinding>() {
+
+    override val viewBinder: (LayoutInflater) -> ActivityMainBinding =
+        ActivityMainBinding::inflate
+
+    override fun onBindFinished(savedInstanceState: Bundle?) {
+        //left to be used later if needed
     }
 }
