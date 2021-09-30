@@ -1,3 +1,5 @@
+import AppModules.withCoreModule
+
 plugins {
     id(Build.Plugins.androidApplicationPlugin)
     kotlin(Build.Plugins.kotlinAndroidPlugin)
@@ -51,6 +53,7 @@ dependencies {
     withAndroidX()
     withHilt()
     withNavigationComponent()
+    withCoreModule()
     withTestDependencies()
 }
 
