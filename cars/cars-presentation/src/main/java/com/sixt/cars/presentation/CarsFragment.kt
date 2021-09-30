@@ -18,6 +18,7 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
 
     override fun onBindFinished(savedInstanceState: Bundle?) {
         //left to be used later if needed
+        viewModel.any()
     }
 
     override val viewModel: CarsViewModel by viewModels()
