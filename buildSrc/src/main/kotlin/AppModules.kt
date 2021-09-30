@@ -1,3 +1,6 @@
+import Cars.withCarsDomainModule
+import Cars.withCarsModelModule
+import Cars.withCarsPresentationModule
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.project
 
@@ -9,6 +12,12 @@ object AppModules {
     fun DependencyHandlerScope.withCoreModule() =
         add("implementation", project(":core"))
 
+    fun DependencyHandlerScope.withCarsModule() {
+        withCarsDomainModule()
+        withCarsModelModule()
+        withCarsPresentationModule()
+    }
+
 }
 
 object Cars {
@@ -18,5 +27,8 @@ object Cars {
 
     fun DependencyHandlerScope.withCarsDomainModule() =
         add("implementation", project(":cars:cars-domain"))
+
+    fun DependencyHandlerScope.withCarsPresentationModule() =
+        add("implementation", project(":cars:cars-presentation"))
 
 }
