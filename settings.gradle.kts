@@ -12,3 +12,4 @@ rootProject.name = "SixtChallenge"
 
 include(":app")
 include(":network")
+include(":core")
