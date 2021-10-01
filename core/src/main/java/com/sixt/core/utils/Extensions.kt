@@ -3,8 +3,17 @@ package com.sixt.core.utils
 import android.content.Context
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import coil.load
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import com.sixt.core.R
 import retrofit2.HttpException
 import java.io.IOException
@@ -20,10 +29,12 @@ fun ImageView.loadImage(
     url: String?,
     crossfade: Boolean = true,
     @DrawableRes placeholder: Int = R.drawable.ic_image_placeholder
-) = load(url) {
-    crossfade(crossfade)
-    placeholder(placeholder)
-    error(placeholder)
+) {
+    load(url) {
+        crossfade(crossfade)
+        placeholder(placeholder)
+        error(placeholder)
+    }
 }
 
 fun Throwable.networkErrorMessage(context: Context): String? =
@@ -38,3 +49,15 @@ fun Throwable.networkErrorMessage(context: Context): String? =
         }
         else -> null
     }
+
+fun RecyclerView.withHorizontalSpaceItemDecoration(@DimenRes dimen: Int) =
+    addItemDecoration(HorizontalSpaceItemDecoration(context, dimen))
+
+fun RecyclerView.attachSnapHelper(snapHelper: SnapHelper = PagerSnapHelper()) =
+    snapHelper.attachToRecyclerView(this)
+
+fun MaterialTextView.updateTextColor(@ColorRes color: Int) =
+    setTextColor(ContextCompat.getColor(context, color))
+
+fun MaterialCardView.updateBackgroundColor(@ColorRes color: Int) =
+    setCardBackgroundColor(ContextCompat.getColor(context, color))

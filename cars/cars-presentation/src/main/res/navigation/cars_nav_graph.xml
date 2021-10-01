@@ -7,6 +7,6 @@
 
     <fragment
         android:id="@+id/carsFragment"
-        android:name="com.sixt.cars.presentation.CarsFragment"
+        android:name="com.sixt.cars.presentation.main.CarsFragment"
         tools:layout="@layout/fragment_cars" />
 </navigation>

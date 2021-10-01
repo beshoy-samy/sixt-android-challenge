@@ -1,6 +1,8 @@
 package com.sixt.cars.presentation
 
 import com.sixt.cars.domain.contracts.CarsRepository
+import com.sixt.cars.domain.usecases.GetCarsFirstSelectedUseCase
+import com.sixt.cars.domain.usecases.GetCarsFirstSelectedUseCaseImp
 import com.sixt.cars.domain.usecases.GetCarsUseCase
 import com.sixt.cars.domain.usecases.GetCarsUseCaseImp
 import dagger.Module
@@ -15,5 +17,10 @@ object CarsPresentationModule {
     @Provides
     fun provideGetCarsUseCase(carsRepository: CarsRepository): GetCarsUseCase {
         return GetCarsUseCaseImp(carsRepository)
+    }
+
+    @Provides
+    fun provideGetCarsFirstSelectedUseCase(carsRepository: CarsRepository): GetCarsFirstSelectedUseCase {
+        return GetCarsFirstSelectedUseCaseImp(carsRepository)
     }
 }
