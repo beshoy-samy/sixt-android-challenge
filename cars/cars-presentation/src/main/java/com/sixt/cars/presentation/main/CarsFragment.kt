@@ -59,7 +59,7 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
 
     private fun setupRecycler() {
         binding.carsRv.adapter = carsListAdapter
-        binding.carsRv.withHorizontalSpaceItemDecoration(R.dimen.margin_small)
+        binding.carsRv.withLinearSpaceItemDecoration(R.dimen.margin_small)
         carsListAdapter.onCarClickedCallback = this::onCarClicked
     }
 

@@ -7,10 +7,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.*
 import coil.load
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
@@ -50,8 +47,13 @@ fun Throwable.networkErrorMessage(context: Context): String? =
         else -> null
     }
 
-fun RecyclerView.withHorizontalSpaceItemDecoration(@DimenRes dimen: Int) =
-    addItemDecoration(HorizontalSpaceItemDecoration(context, dimen))
+fun RecyclerView.withLinearSpaceItemDecoration(@DimenRes dimen: Int) {
+    (layoutManager as? LinearLayoutManager)?.let {
+        if (it.orientation == LinearLayoutManager.HORIZONTAL)
+            addItemDecoration(HorizontalSpaceItemDecoration(context, dimen))
+        else addItemDecoration(VerticalSpaceItemDecoration(context, dimen))
+    }
+}
 
 fun RecyclerView.attachSnapHelper(snapHelper: SnapHelper = PagerSnapHelper()) =
     snapHelper.attachToRecyclerView(this)
