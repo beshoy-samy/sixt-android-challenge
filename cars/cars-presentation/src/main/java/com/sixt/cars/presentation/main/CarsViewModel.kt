@@ -22,7 +22,7 @@ class CarsViewModel @Inject constructor(
 
     val intents = Channel<CarsIntents>()
 
-    private val _viewState = MutableStateFlow<CarsViewState>(CarsViewState.MapState)
+    private val _viewState = MutableStateFlow<CarsViewState>(CarsViewState.Idle)
     val viewState: StateFlow<CarsViewState> get() = _viewState
 
     private lateinit var carsList: List<Car>
@@ -36,12 +36,13 @@ class CarsViewModel @Inject constructor(
 
     private fun processIntents(intent: CarsIntents) {
         when (intent) {
-            is CarsIntents.GetCars -> reduceGetCarsIntent()
+            is CarsIntents.InitCars -> reduceInitCarsIntent()
             is CarsIntents.SelectCar -> reduceSelectCar(intent.position)
         }
     }
 
-    private fun reduceGetCarsIntent() {
+    private fun reduceInitCarsIntent() {
+        if (this::carsList.isInitialized) return
         viewModelScope.launch(coroutineContext) {
             getCarsUseCase.getCarsFirstSelected()
                 .onStart { _viewState.emit(CarsViewState.Loading) }

@@ -49,6 +49,8 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
         setupRecycler()
 
         lifecycleScope.launch {
+            renderMap()
+
             viewModel.viewState.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect { render(it) }
         }
@@ -69,7 +71,6 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
 
     private fun render(viewState: CarsViewState) {
         when (viewState) {
-            is CarsViewState.MapState -> renderMap()
             is CarsViewState.Loading -> requireContext().shortToast("loading...")
             is CarsViewState.Error -> {
                 val errorMessage = viewState.throwable.networkErrorMessage(requireContext())
@@ -78,16 +79,17 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
             }
             is CarsViewState.Cars -> renderCars(viewState)
             is CarsViewState.CarSelection -> renderCarSelection(viewState)
+            else -> return
         }
     }
 
     private fun renderCars(viewState: CarsViewState.Cars) {
         carsListAdapter.submitList(viewState.data)
         showCarsOnMap(googleMap, viewState.data)
-        consumeMarkersClicks(googleMap)
     }
 
     private fun renderCarSelection(viewState: CarsViewState.CarSelection) {
+        if (this::markers.isInitialized.not()) showCarsOnMap(googleMap, viewState.cars)
         carsListAdapter.submitList(viewState.cars)
         binding.carsRv.smoothScrollToPosition(viewState.position)
         moveCameraToCar(viewState.car)
@@ -95,7 +97,6 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
         markers[viewState.position].updateIcon(isSelected = true)
         markers[viewState.position]?.showInfoWindow()
     }
-
 
     private fun showCarsOnMap(googleMap: GoogleMap, data: List<Car>) {
         markers = data.mapIndexed { index, car ->
@@ -108,6 +109,7 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
         }
         moveCameraToCar(data.firstOrNull())
         markers[0]?.showInfoWindow()
+        consumeMarkersClicks(googleMap)
     }
 
     private fun consumeMarkersClicks(googleMap: GoogleMap) {
@@ -150,14 +152,12 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
         setIcon(icon)
     }
 
-    private fun renderMap() {
+    private suspend fun renderMap() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
-        lifecycle.coroutineScope.launchWhenStarted {
-            mapFragment?.awaitMap()?.let {
-                it.setMapStyle(requireContext(), R.raw.map_style)
-                googleMap = it
-                viewModel.intents.send(CarsIntents.GetCars)
-            }
+        mapFragment?.awaitMap()?.let {
+            it.setMapStyle(requireContext(), R.raw.map_style)
+            googleMap = it
+            viewModel.intents.send(CarsIntents.InitCars)
         }
     }
 
