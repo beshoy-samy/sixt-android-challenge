@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface CarsService {
 
-    @GET("codingtask/cars/")
+    @GET("codingtask/cars")
     suspend fun getCars(): List<CarResponseModel>
 }

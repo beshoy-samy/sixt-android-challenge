@@ -1,36 +1,26 @@
-import AppModules.withCarsModule
 import AppModules.withCoreModule
+import Cars.withCarsDomainModule
 
 plugins {
-    id(Build.Plugins.androidApplicationPlugin)
+    id(Build.Plugins.androidLibraryPlugin)
     kotlin(Build.Plugins.kotlinAndroidPlugin)
     kotlin(Build.Plugins.kotlinKaptPlugin)
     id(Build.Plugins.hiltAndroidPlugin)
+    id(Build.Plugins.mapsPlatformSecretPlugin)
 }
 
 android {
-
     compileSdk = Config.AndroidProject.compileSdkVersion
 
     defaultConfig {
-        applicationId = "com.sixt.challenge"
         minSdk = Config.AndroidProject.minSdkVersion
         targetSdk = Config.AndroidProject.targetSdkVersion
-        versionCode = Config.AndroidProject.versionCode
-        versionName = Config.AndroidProject.versionName
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
 
         release {
             isMinifyEnabled = Config.isReleaseMinifyEnabled
-
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
 
     }
@@ -47,15 +37,16 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
 }
 
 dependencies {
     withAndroidX()
+    withLifeCycleKtx()
     withHilt()
     withNavigationComponent()
     withCoreModule()
-    withCarsModule()
+    withCarsDomainModule()
+    withGoogleMaps()
     withTestDependencies()
 }
 

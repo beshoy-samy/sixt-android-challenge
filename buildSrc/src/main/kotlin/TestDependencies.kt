@@ -17,8 +17,11 @@ object TestDependencies {
     }
 
     private const val junit = "junit:junit:${Versions.junit}"
+    private const val coroutines =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Coroutines.version}"
+    private const val turbine = "app.cash.turbine:turbine:0.6.1"
 
-    internal val testDependencies = listOf(junit)
+    internal val testDependencies = listOf(junit, coroutines, turbine)
 
     internal val androidTestDependencies = listOf(Android.junit, Android.espresso)
 

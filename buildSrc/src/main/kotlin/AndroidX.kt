@@ -40,11 +40,12 @@ object LifeCycleKtx {
 
     private const val version = "2.4.0-alpha03"
     private const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+    private const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
     private const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
 
     internal val dependencies =
         mapOf(
-            "implementation" to listOf(viewmodelKtx, livedataKtx)
+            "implementation" to listOf(viewmodelKtx, runtimeKtx, livedataKtx)
         )
 }
 

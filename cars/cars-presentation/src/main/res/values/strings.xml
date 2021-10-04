@@ -1,0 +1,4 @@
+<resources>
+    <string name="car_maker_with_name">%s %s</string>
+    <string name="car_transmission_fuel_type">Trans %s, Fuel %s</string>
+</resources>

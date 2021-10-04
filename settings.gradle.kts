@@ -16,3 +16,4 @@ include(":core")
 
 include(":cars:cars-domain")
 include(":cars:cars-model")
+include(":cars:cars-presentation")
