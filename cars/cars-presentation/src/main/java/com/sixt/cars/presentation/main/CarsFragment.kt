@@ -89,6 +89,10 @@ class CarsFragment : BaseFragment<FragmentCarsBinding, CarsViewModel>() {
     }
 
     private fun renderCarSelection(viewState: CarsViewState.CarSelection) {
+        /**
+         * check if markers are available or not, if not show them first
+         * this is to handle markers being destroyed after rotating the screen
+         */
         if (this::markers.isInitialized.not()) showCarsOnMap(googleMap, viewState.cars)
         carsListAdapter.submitList(viewState.cars)
         binding.carsRv.smoothScrollToPosition(viewState.position)

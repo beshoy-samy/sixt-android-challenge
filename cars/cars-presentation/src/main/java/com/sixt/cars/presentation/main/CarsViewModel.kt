@@ -42,7 +42,12 @@ class CarsViewModel @Inject constructor(
     }
 
     private fun reduceInitCarsIntent() {
+        /**
+         * check if cars list was fetched before or not, if not get them
+         * this is to avoid re-fetching the cars after rotating the screen
+         */
         if (this::carsList.isInitialized) return
+
         viewModelScope.launch(coroutineContext) {
             getCarsUseCase.getCarsFirstSelected()
                 .onStart { _viewState.emit(CarsViewState.Loading) }

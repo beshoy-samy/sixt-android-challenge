@@ -1,3 +1,5 @@
+import Coroutines.withCoroutinesCore
+
 plugins {
     id(Build.Plugins.javaLibraryPlugin)
     id(Build.Plugins.kotlinPlugin)

@@ -1,5 +1,6 @@
 import AppModules.withNetworkModule
 import Cars.withCarsDomainModule
+import Coroutines.withCoroutinesCore
 
 plugins {
     id(Build.Plugins.androidLibraryPlugin)

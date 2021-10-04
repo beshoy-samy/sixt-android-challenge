@@ -47,6 +47,7 @@ dependencies {
     withCoreModule()
     withCarsDomainModule()
     withGoogleMaps()
+    withTestDependencies()
 }
 
 kapt {

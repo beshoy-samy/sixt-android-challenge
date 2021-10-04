@@ -1,7 +1,13 @@
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 
-fun DependencyHandlerScope.withCoroutinesCore() {
-    add("implementation", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+object Coroutines {
+
+    const val version = "1.5.2"
+
+    fun DependencyHandlerScope.withCoroutinesCore() {
+        add("implementation", "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version}")
+    }
+
 }
 
 fun DependencyHandlerScope.withCoil() =
