@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E64A19</color>
+    <color name="secondaryColorPrimary">@color/colorPrimary</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
+    <color name="colorAccent">#FFC107</color>
+
+    <color name="app_background_color">@color/white</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="primary_text">@color/black</color>
+    <color name="secondary_text">#707070</color>
+    <color name="error">@color/red</color>
+    <color name="progress_color">@color/colorAccent</color>
+    <color name="divider_color">@color/black</color>
+
+    <color name="black">#FF000000</color>
+    <color name="transparent_black">#80212121</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="off_white">#F8F8F8</color>
+    <color name="green">#5CB781</color>
+    <color name="red">#E5000E</color>
+    <color name="blue">#2196F3</color>
+
+    <color name="hint_text_color">@color/secondary_text</color>
+    <color name="input_box_color">@color/separator</color>
+    <color name="separator">#DEDCDC</color>
+</resources>

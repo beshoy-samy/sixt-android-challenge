@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="network_error">Internet connection was not found</string>
+    <string name="internal_server_error">sorry, we are offline right now</string>
+    <string name="content_not_found">sorry, required content was not found</string>
+    <string name="general_network_error_message">network error</string>
+
+    <string name="unknown_error">unknown error</string>
+</resources>
