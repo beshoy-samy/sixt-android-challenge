@@ -1,3 +1,4 @@
+import AppModules.withCarsModule
 import AppModules.withCoreModule
 
 plugins {
@@ -54,6 +55,7 @@ dependencies {
     withHilt()
     withNavigationComponent()
     withCoreModule()
+    withCarsModule()
     withTestDependencies()
 }
 

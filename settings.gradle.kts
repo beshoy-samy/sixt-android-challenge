@@ -13,3 +13,7 @@ rootProject.name = "SixtChallenge"
 include(":app")
 include(":network")
 include(":core")
+
+include(":cars:cars-domain")
+include(":cars:cars-model")
+include(":cars:cars-presentation")
